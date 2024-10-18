@@ -38,12 +38,6 @@ def main():
     This Streamlit dashboard is intended to show off capabilities of Azure OpenAI, including integration with AI Search, Azure Speech Services, and external APIs.
     """
     )
-    st.session_state['answer'] = ''
-
-    if  st.session_state['answer'] in realans:
-            answerStat = "correct"
-    elif st.session_state['answer'] not in realans:
-        answerStat = "incorrect"
 
     # Initialize chat history
     if "messages" not in st.session_state:
