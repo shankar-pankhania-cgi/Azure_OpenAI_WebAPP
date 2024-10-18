@@ -42,8 +42,8 @@ def main():
 
     if  st.session_state['answer'] in realans:
             answerStat = "correct"
-        elif st.session_state['answer'] not in realans:
-            answerStat = "incorrect"
+    elif st.session_state['answer'] not in realans:
+        answerStat = "incorrect"
 
     # Initialize chat history
     if "messages" not in st.session_state:
