@@ -38,14 +38,21 @@ def main():
     This Streamlit dashboard is intended to show off capabilities of Azure OpenAI, including integration with AI Search, Azure Speech Services, and external APIs.
     """
     )
+    st.session_state['answer'] = ''
+
+    if  st.session_state['answer'] in realans:
+            answerStat = "correct"
+        elif st.session_state['answer'] not in realans:
+            answerStat = "incorrect"
 
     # Initialize chat history
     if "messages" not in st.session_state:
         st.session_state.messages = []
 
-    aoai_endpoint = st.secrets["AZURE_OPENAI_ENDPOINT"]
-    aoai_key = st.secrets["AZURE_OPENAI_API_KEY"]
-    aoai_deployment_name = st.secrets["AZURE_OPENAI_DEPLOYMENT_NAME"]
+
+    aoai_endpoint = st.secrets["aoai"]["AZURE_OPENAI_ENDPOINT"]
+    aoai_key = st.secrets["aoai"]["AZURE_OPENAI_API_KEY"]
+    aoai_deployment_name = st.secrets["aoai"]["AZURE_OPENAI_DEPLOYMENT_NAME"]
 
     # Display chat messages from history on app rerun
     for message in st.session_state.messages:
