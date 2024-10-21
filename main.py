@@ -17,16 +17,6 @@ def handle_chat_prompt(prompt, deployment_name, aoai_endpoint, aoai_key):
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = process_message(prompt)
-        # if model_type == "Use base GPT-4 model":
-        #     for response in create_chat_completion(deployment_name, st.session_state.messages, aoai_endpoint, aoai_key):
-        #         if response.choices:
-        #             full_response += (response.choices[0].delta.content or "")
-        #             message_placeholder.markdown(full_response + "▌")
-        # else:
-        #     for response in create_chat_with_data_completion(deployment_name, st.session_state.messages, aoai_endpoint, aoai_key, search_endpoint, search_key, search_index_name):
-        #         if response.choices:
-        #             full_response += (response.choices[0].delta.content or "")
-        #             message_placeholder.markdown(full_response + "▌")
         message_placeholder.markdown(full_response)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
  
