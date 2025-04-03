@@ -29,9 +29,9 @@ def main():
         st.session_state.messages = []
 
     # Gets Azure credentials using streamlit secrets
-    aoai_endpoint = st.secrets["aoai"]["AZURE_OPENAI_ENDPOINT"]
-    aoai_key = st.secrets["aoai"]["AZURE_OPENAI_API_KEY"]
-    aoai_deployment_name = st.secrets["aoai"]["AZURE_OPENAI_DEPLOYMENT_NAME"]
+    aoai_endpoint = st.secrets["AZURE_OPENAI_ENDPOINT"]
+    aoai_key = st.secrets["AZURE_OPENAI_API_KEY"]
+    aoai_deployment_name = st.secrets["AZURE_OPENAI_DEPLOYMENT_NAME"]
 
      # Display chat messages from history on app rerun
     for message in st.session_state.messages:
