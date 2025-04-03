@@ -17,37 +17,22 @@ def handle_chat_prompt(prompt, deployment_name, aoai_endpoint, aoai_key):
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = process_message(prompt)
-        # if model_type == "Use base GPT-4 model":
-        #     for response in create_chat_completion(deployment_name, st.session_state.messages, aoai_endpoint, aoai_key):
-        #         if response.choices:
-        #             full_response += (response.choices[0].delta.content or "")
-        #             message_placeholder.markdown(full_response + "▌")
-        # else:
-        #     for response in create_chat_with_data_completion(deployment_name, st.session_state.messages, aoai_endpoint, aoai_key, search_endpoint, search_key, search_index_name):
-        #         if response.choices:
-        #             full_response += (response.choices[0].delta.content or "")
-        #             message_placeholder.markdown(full_response + "▌")
         message_placeholder.markdown(full_response)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
  
 def main():
-    st.write(
-    """
-    # Chat with Data
-
-    This Streamlit dashboard is intended to show off capabilities of Azure OpenAI, including integration with AI Search, Azure Speech Services, and external APIs.
-    """
-    )
+    st.title("United Kingdom History Chatbot")
 
     # Initialize chat history
     if "messages" not in st.session_state:
         st.session_state.messages = []
 
+    # Gets Azure credentials using streamlit secrets
     aoai_endpoint = st.secrets["aoai"]["AZURE_OPENAI_ENDPOINT"]
     aoai_key = st.secrets["aoai"]["AZURE_OPENAI_API_KEY"]
     aoai_deployment_name = st.secrets["aoai"]["AZURE_OPENAI_DEPLOYMENT_NAME"]
 
-    # Display chat messages from history on app rerun
+     # Display chat messages from history on app rerun
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
