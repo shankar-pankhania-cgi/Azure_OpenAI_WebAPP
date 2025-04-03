@@ -5,7 +5,6 @@ from pathlib import Path
 from dotenv import load_dotenv
 from openai import AzureOpenAI
 from openai.types import FileObject
-from typing_extensions import override
 from openai import AssistantEventHandler, OpenAI
 
 load_dotenv()
